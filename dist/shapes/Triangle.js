@@ -12,6 +12,8 @@ export class Triangle extends Shape {
         ctx.closePath();
         ctx.fillStyle = this.color;
         ctx.fill();
+        ctx.strokeStyle = "rgba(0,0,0,0.2)";
+        ctx.stroke();
     }
     isPointInside(px, py) {
         return (px > this.x - this.size &&

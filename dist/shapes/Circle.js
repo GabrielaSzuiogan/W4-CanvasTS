@@ -9,6 +9,8 @@ export class Circle extends Shape {
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.fill();
+        ctx.strokeStyle = "rgba(0,0,0,0.2)";
+        ctx.stroke();
     }
     isPointInside(px, py) {
         const dx = px - this.x;
