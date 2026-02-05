@@ -5,6 +5,7 @@ body {
 }
 .toolbar {
   position: absolute;
+  z-index: 1;
   top: 10px;
   left: 10px;
   background: rgba(255, 255, 255, 0.8);
@@ -13,10 +14,13 @@ body {
   display: flex;
   gap: 10px;
 }
+
 canvas {
   display: block;
-  background: #f0f0f0;
+  background: radial-gradient(#ffffff 20%, #e0e7ef 100%);
+  cursor: crosshair;
 }
+
 button {
   cursor: pointer;
   padding: 8px 12px;
