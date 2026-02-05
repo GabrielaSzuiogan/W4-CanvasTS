@@ -1,27 +1,24 @@
-import { BaseShape } from "./Shapes.js";
-export class Triangle extends BaseShape {
-  constructor(x: number, y: number, size: number, color: string) {
-    super(x, y, size, color, "triangle");
-  }
+import { Shape } from "./Shape.js";
 
-  drawShape(ctx: CanvasRenderingContext2D, currentSize: number): void {
-    const height = (Math.sqrt(3) / 2) * currentSize;
+export class Triangle extends Shape {
+  size = 50;
+
+  draw(ctx: CanvasRenderingContext2D) {
     ctx.beginPath();
-    ctx.moveTo(this.x, this.y - height / 2);
-    ctx.lineTo(this.x - currentSize / 2, this.y + height / 2);
-    ctx.lineTo(this.x + currentSize / 2, this.y + height / 2);
+    ctx.moveTo(this.x, this.y - this.size);
+    ctx.lineTo(this.x - this.size, this.y + this.size);
+    ctx.lineTo(this.x + this.size, this.y + this.size);
     ctx.closePath();
+    ctx.fillStyle = this.color;
     ctx.fill();
-    ctx.stroke();
   }
 
-  contains(mx: number, my: number): boolean {
-    const half = this.size / 2;
+  isPointInside(px: number, py: number) {
     return (
-      mx >= this.x - half &&
-      mx <= this.x + half &&
-      my >= this.y - half &&
-      my <= this.y + half
+      px > this.x - this.size &&
+      px < this.x + this.size &&
+      py > this.y - this.size &&
+      py < this.y + this.size
     );
   }
 }

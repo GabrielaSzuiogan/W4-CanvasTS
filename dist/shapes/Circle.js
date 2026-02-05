@@ -1,17 +1,18 @@
-import { BaseShape } from "./Shapes.js";
-export class Circle extends BaseShape {
-    constructor(x, y, size, color) {
-        super(x, y, size, color, "circle");
+import { Shape } from "./Shape.js";
+export class Circle extends Shape {
+    constructor() {
+        super(...arguments);
+        this.radius = 40;
     }
-    drawShape(ctx, currentSize) {
+    draw(ctx) {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, currentSize / 2, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
         ctx.fill();
-        ctx.stroke();
     }
-    contains(mx, my) {
-        const dx = this.x - mx;
-        const dy = this.y - my;
-        return Math.sqrt(dx * dx + dy * dy) < this.size / 2;
+    isPointInside(px, py) {
+        const dx = px - this.x;
+        const dy = py - this.y;
+        return Math.sqrt(dx * dx + dy * dy) < this.radius;
     }
 }
